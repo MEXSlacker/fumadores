@@ -10,7 +10,7 @@ public class Dealer {
         n=0;
         vendiendo = false;
     }
-    public synchronized void comprar(){
+    public synchronized void comprar(int item, int numCliente){
         if(vendiendo){
             try {
                 System.out.println("Fumando...");
@@ -20,7 +20,20 @@ public class Dealer {
         }
         n++;
         vendiendo = true;
-        System.out.println("Vendiendo...");
+        switch(item){
+            case 0:{
+                System.out.println("Cliente: "+numCliente+" comprando Tabacco");
+                break;
+            }
+            case 1:{
+                System.out.println("Cliente: "+numCliente+" comprando papel forjador");
+                break;
+            }
+            case 2:{
+                System.out.println("Cliente: "+numCliente+" comprando cerillos");
+                break;
+            }
+        }        
         vendiendo = false;
         notify();
     }
